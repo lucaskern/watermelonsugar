@@ -49,7 +49,7 @@
 
         <img id="main" src="">
 
-        <button id="play" onclick="playSong()">&#9654;</button>
+        <button id="play">&#9654;</button>
 
         <audio id="song">
             <source src="watermelon.mp3" type="audio/mp3">
@@ -60,51 +60,72 @@
 
         let song
         let play
+        let faceCount = 0
 
         let faces = [
-            ["sr1.png", "sr2.jpg"],
-            ["rd1.jpg", "rd2.jpg"],
-            ["ah1.jpg", "ah2.jpg"],
-            ["dd1.jpg", "dd2.jpg"],
+            [
+                ["sr1.png", "sr2.jpg"],
+                ["rd1.jpg", "rd2.jpg"],
+                ["ah1.jpg", "ah2.jpg"],
+                ["dd1.jpg", "dd2.jpg"],
+            ],
+            [
+                ["ah1.jpg", "ah2.jpg"],
+                ["rd1.jpg", "rd2.jpg"],
+                ["sr1.png", "sr2.jpg"],
+                ["dd1.jpg", "dd2.jpg"],
+            ]
         ]
 
         function autorun()
         {
             song = document.getElementById("song")
-            console.log(song)
 
             play = document.getElementById("play")
+
+            setLimit = faces.length
+
+            play.addEventListener("click", function() {
+                playSong(faces[faceCount])
+
+
+                faceCount < setLimit ? faceCount++ : faceCount = 0
+            });
             
             main = document.getElementById("main")
-
-            body = document.get("body")
         }
 
-        function playSong() {
-            console.log("play ran")
+        function playSong(faceArray) {
             song.volume = .5
             song.currentTime = 50
             song.play()
 
-            setTimeout(function() {main.src="./images/"+faces[0][0]; document.body.style.backgroundColor  = "#F35588"}, 0)
-            setTimeout(function() {main.src="./images/"+faces[0][1]; document.body.style.backgroundColor  = "#71A95A"}, 1600)
+            setTimeout(function() {main.src="./images/"+faceArray[0][0];}, 0)
+            setTimeout(function() {main.src="./images/"+faceArray[0][1]; bgChange()}, 1600)
 
-            setTimeout(function() {main.src="./images/"+faces[1][0]; document.body.style.backgroundColor  = "#F35588"}, 2800)
-            setTimeout(function() {main.src="./images/"+faces[1][1]; document.body.style.backgroundColor  = "#71A95A"}, 4000)
+            setTimeout(function() {main.src="./images/"+faceArray[1][0]; bgChange()}, 2800)
+            setTimeout(function() {main.src="./images/"+faceArray[1][1]; bgChange()}, 4000)
 
-            setTimeout(function() {main.src="./images/"+faces[2][0]; document.body.style.backgroundColor  = "#F35588"}, 5400)
-            setTimeout(function() {main.src="./images/"+faces[2][1]; document.body.style.backgroundColor  = "#71A95A"}, 6600)
+            setTimeout(function() {main.src="./images/"+faceArray[2][0]; bgChange()}, 5400)
+            setTimeout(function() {main.src="./images/"+faceArray[2][1]; bgChange()}, 6600)
 
-            setTimeout(function() {main.src="./images/"+faces[3][0]; document.body.style.backgroundColor  = "#F35588"}, 7800)
-            setTimeout(function() {main.src="./images/"+faces[3][1]; document.body.style.backgroundColor  = "#71A95A"}, 8800)
+            setTimeout(function() {main.src="./images/"+faceArray[3][0]; bgChange()}, 7800)
+            setTimeout(function() {main.src="./images/"+faceArray[3][1]; bgChange()}, 8800)
 
-            setTimeout(function() {song.pause()}, 10400)
+            setTimeout(function() {song.pause();}, 10400)
         }
 
         function resetSong() {
             song.stop
         }
 
+        function bgChange() {
+
+            let compStyles = window.getComputedStyle(document.body)
+            let color = compStyles.getPropertyValue('background-color')
+            
+            color == "rgb(243, 85, 136)" ? document.body.style.backgroundColor = "#71A95A" : document.body.style.backgroundColor = "#F35588"
+        }
 
         if (window.addEventListener) window.addEventListener("load", autorun, false);
         else if (window.attachEvent) window.attachEvent("onload", autorun);
