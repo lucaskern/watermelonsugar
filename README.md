@@ -1,5 +1,7 @@
 Giggle Box #1
 
+Title: Watermelon Sugar
+
 Based on the internet trend
 
 Simply click play and watch
