@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: #F35588;
+            background-color: rgb(255, 124, 166);
         }
 
         p, a {
@@ -29,7 +29,7 @@
         }
 
         #text {
-            color: rgb(21,232,67);
+            color: rgb(52, 255, 111);
             font-size: 72px;
             color: white;
             z-index: 0;
@@ -60,7 +60,8 @@
             display: block;
             position: absolute;
             top: 30vh;
-            left: 35%;
+            left: 50%;
+            -webkit-transform: translate(-50%, 0); 
             text-align: center;
             max-width: 500px;
             z-index: 10;
@@ -91,6 +92,9 @@
         let song
         let play
         let faceCount = 0
+
+        let green = "rgb(52, 255, 111)"
+        let pink = "rgb(255, 124, 166)"
 
         let textH = "HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH";
 
@@ -159,7 +163,7 @@
             let compStyles = window.getComputedStyle(document.body)
             let color = compStyles.getPropertyValue('background-color')
             
-            color == "rgb(243, 85, 136)" ? document.body.style.backgroundColor = "#71A95A" : document.body.style.backgroundColor = "#F35588"
+            color == pink ? document.body.style.backgroundColor = green : document.body.style.backgroundColor = pink
         }
 
         function textChange() {
@@ -168,9 +172,13 @@
             let compStyles = window.getComputedStyle(text)
             let color = compStyles.getPropertyValue('color')
 
+            console.log(color);
+
             text.innerHTML.indexOf("WATERMELON") !== -1 ? text.innerHTML = textH : text.innerHTML = textW;
 
-            color == "rgb(113, 169, 90)" ? text.style.color = "#F35588" : text.style.color = "#71A95A"
+            //text.color = "rgb('255', 0, 0)"
+
+            color == green ? text.style.color = pink : text.style.color = green
         }
 
         if (window.addEventListener) window.addEventListener("load", autorun, false);
