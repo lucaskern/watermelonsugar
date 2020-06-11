@@ -8,7 +8,14 @@
     <meta name="description" content="Gigglebox project 1">
     <meta name="keywords" content="javascript, harry styles, watermelon sugar high, code challenge">
 
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+
     <style type="text/css">
+
+        html, body {
+            overflow: hidden;
+        }
+
         body {
             background-color: #F35588;
         }
@@ -18,6 +25,18 @@
             font-size: 14px;
             color: white;
             margin: 0 auto;
+            z-index: 10;
+        }
+
+        #text {
+            color: rgb(21,232,67);
+            font-size: 72px;
+            color: white;
+            z-index: 0;
+            position: absolute;
+            top: -100px;
+            width: 120%;
+            font-family: 'Lobster', cursive;
         }
 
         #parent {
@@ -54,6 +73,8 @@
 
     <div id="parent">
 
+        <p id="text"></p>
+
         <img id="main" src="">
 
         <button id="play">&#9654;</button>
@@ -71,6 +92,10 @@
         let play
         let faceCount = 0
 
+        let textH = "HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH HIGH";
+
+        let textW = "WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR WATERMELON SUGAR";
+
         let faces = [
             [
                 ["sr1.png", "sr2.jpg"],
@@ -83,6 +108,12 @@
                 ["tc1.jpg", "tc2.png"],
                 ["rg1.jpg", "rg2.jpg"],
                 ["hm1.jpg", "hm2.jpg"],
+            ],
+            [
+                ["wd1.jpg", "wd2.gif"],
+                ["rp1.jpg", "rp2.jpg"],
+                ["sc1.jpg", "sc2.gif"],
+                ["lc1.jpg", "lc2.jpg"],
             ]
         ]
 
@@ -108,17 +139,17 @@
             song.currentTime = 50
             song.play()
 
-            setTimeout(function() {main.src="./images/"+faceArray[0][0];}, 0)
-            setTimeout(function() {main.src="./images/"+faceArray[0][1]; bgChange()}, 1600)
+            setTimeout(function() {main.src="./images/"+faceArray[0][0]; textChange()}, 0)
+            setTimeout(function() {main.src="./images/"+faceArray[0][1]; bgChange(); textChange()}, 1600)
 
-            setTimeout(function() {main.src="./images/"+faceArray[1][0]; bgChange()}, 2800)
-            setTimeout(function() {main.src="./images/"+faceArray[1][1]; bgChange()}, 4000)
+            setTimeout(function() {main.src="./images/"+faceArray[1][0]; bgChange(); textChange()}, 2800)
+            setTimeout(function() {main.src="./images/"+faceArray[1][1]; bgChange(); textChange()}, 4000)
 
-            setTimeout(function() {main.src="./images/"+faceArray[2][0]; bgChange()}, 5400)
-            setTimeout(function() {main.src="./images/"+faceArray[2][1]; bgChange()}, 6600)
+            setTimeout(function() {main.src="./images/"+faceArray[2][0]; bgChange(); textChange()}, 5400)
+            setTimeout(function() {main.src="./images/"+faceArray[2][1]; bgChange(); textChange()}, 6600)
 
-            setTimeout(function() {main.src="./images/"+faceArray[3][0]; bgChange()}, 7800)
-            setTimeout(function() {main.src="./images/"+faceArray[3][1]; bgChange()}, 8800)
+            setTimeout(function() {main.src="./images/"+faceArray[3][0]; bgChange(); textChange()}, 7800)
+            setTimeout(function() {main.src="./images/"+faceArray[3][1]; bgChange(); textChange()}, 8800)
 
             setTimeout(function() {song.pause();}, 10400)
         }
@@ -129,6 +160,17 @@
             let color = compStyles.getPropertyValue('background-color')
             
             color == "rgb(243, 85, 136)" ? document.body.style.backgroundColor = "#71A95A" : document.body.style.backgroundColor = "#F35588"
+        }
+
+        function textChange() {
+            let text = document.getElementById("text");
+
+            let compStyles = window.getComputedStyle(text)
+            let color = compStyles.getPropertyValue('color')
+
+            text.innerHTML.indexOf("WATERMELON") !== -1 ? text.innerHTML = textH : text.innerHTML = textW;
+
+            color == "rgb(113, 169, 90)" ? text.style.color = "#F35588" : text.style.color = "#71A95A"
         }
 
         if (window.addEventListener) window.addEventListener("load", autorun, false);
