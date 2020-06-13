@@ -17,7 +17,7 @@
         }
 
         body {
-            background-color: rgb(255, 124, 166);
+            background-color:rgb(116, 176, 255);
         }
 
         p, a {
@@ -63,6 +63,10 @@
             z-index: 1;
         }
 
+        #play:focus {
+            outline: none;
+        }
+
         #main {
             display: block;
             position: absolute;
@@ -71,6 +75,7 @@
             -webkit-transform: translate(-50%, 0); 
             text-align: center;
             max-width: 500px;
+            filter: drop-shadow(0 0 30px #333);
             z-index: 10;
         }
     </style>
@@ -150,7 +155,7 @@
             song.currentTime = 50
             song.play()
 
-            setTimeout(function() {main.src="./images/"+faceArray[0][0]; textChange()}, 0)
+            setTimeout(function() {main.src="./images/"+faceArray[0][0]; bgChange(); textChange()}, 0)
             setTimeout(function() {main.src="./images/"+faceArray[0][1]; bgChange(); textChange()}, 1600)
 
             setTimeout(function() {main.src="./images/"+faceArray[1][0]; bgChange(); textChange()}, 2800)
